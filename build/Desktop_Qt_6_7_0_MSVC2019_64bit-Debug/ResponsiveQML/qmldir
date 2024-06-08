@@ -1,5 +1,0 @@
-module ResponsiveQML
-typeinfo appResponsiveQML.qmltypes
-prefer :/ResponsiveQML/
-Main 1.0 Main.qml
-

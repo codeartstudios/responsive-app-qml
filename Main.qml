@@ -13,6 +13,8 @@ Window {
     property bool isTabletView: !isMobileView && width <= 750
     property bool isDesktopView: !isMobileView && !isTabletView
 
+    property real selectedMenuIndex: 0
+
     // Desktop Layout
     RowLayout {
         anchors.fill: parent
@@ -101,6 +103,7 @@ Window {
         width: 300
         height: app.height
         interactive: isMobileView
+        modal: true
 
         background: Rectangle {
             color: "#eee"
@@ -132,26 +135,47 @@ Window {
                 width: parent.width
                 model: 5
 
-                delegate: Row {
-                    spacing: 0
+                delegate: Item {
+                    width: parent.width
+                    height: menurow.height
 
-                    Item {
-                        width: 70
-                        height: 50
+                    Row {
+                        id: menurow
+                        spacing: 0
 
-                        Rectangle {
-                            width: 40
-                            height: 40
-                            radius: 8
-                            anchors.centerIn: parent
+                        Item {
+                            width: 70
+                            height: 50
+
+                            Rectangle {
+                                width: 10
+                                height: parent.height
+                                radius: width/2
+                                anchors.left: parent.left
+                                anchors.leftMargin: -radius
+                                color: "orange"
+                                visible: selectedMenuIndex===index
+                            }
+
+                            Rectangle {
+                                width: 40
+                                height: 40
+                                radius: 8
+                                anchors.centerIn: parent
+                            }
+                        }
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: qsTr("Menu ") + (index+1).toString()
+                            font.pixelSize: 14
+                            color: "#444"
                         }
                     }
 
-                    Text {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: qsTr("Menu ") + (index+1).toString()
-                        font.pixelSize: 14
-                        color: "#444"
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: selectedMenuIndex=index
                     }
                 }
             }
