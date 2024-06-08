@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ResponsiveQML/">
+    <file alias="Main.qml">B:/Repos/Felgo/ResponsiveQML/Main.qml</file>
+  </qresource>
+</RCC>
+

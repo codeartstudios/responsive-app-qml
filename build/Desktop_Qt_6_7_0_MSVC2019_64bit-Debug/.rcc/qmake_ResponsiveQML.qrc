@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ResponsiveQML">
+    <file alias="qmldir">B:/Repos/Felgo/ResponsiveQML/build/Desktop_Qt_6_7_0_MSVC2019_64bit-Debug/ResponsiveQML/qmldir</file>
+  </qresource>
+</RCC>
+
